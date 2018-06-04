@@ -27,39 +27,41 @@ This example API documentation page was created with [Slate](https://github.com/
 
 # Authentication
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+> To authorize in angular use:
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+$http.post(
+    "https://app.lodgable.com/oauth",
+    {
+        grant_type: "password",
+        username: "user@example.com", // Email address
+        password: "", // Your password here
+        client_id: "frontend"
+    }
+);
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> The client in the example is provided by the core Lodgable fixtures.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+OAuth2 serves as the Lodgable API authentication mechanism. Prior to requesting information from the Lodgable API, you 
+will need to retrieve an access token to send with your requests to authenticate and authorize the requests.
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+The URL to use is https://app.lodgable.com/oauth. You will want to use the password grant type which looks like the 
+following when submitting it in Angular:
 
-`Authorization: meowmeowmeow`
+```javascript
+$http.post(
+    {
+      "method": "GET",
+      "url": "https://app.lodgable.com/api/lodgable/property-calendar-range/1",
+      "headers": {
+        "Authorization": "Bearer " + access_token
+      }
+    }
+);
+```
+
+For all API requests submitted, an authorization header must be attached. In Angular a request would look like:
 
 <aside class="notice">
 You must replace <code>meowmeowmeow</code> with your personal API key.
