@@ -38,8 +38,9 @@ Getting Started with Slate
 
 You're going to need:
 
- - **Linux or OS X** — Windows may work, but is unsupported.
- - **Ruby, version 2.3.1 or newer**
+ - **Linux or OS X** — Windows may work, but is unsupported. 
+ - **Ruby, version 2.4.4** (On Windows, [install ruby from here](https://github.com/oneclick/rubyinstaller2/releases/download/rubyinstaller-2.4.4-1/rubyinstaller-devkit-2.4.4-1-x64.exe))
+ - Run `ridk install` and run 1, 2 and 3
  - **Bundler** — If Ruby is already installed, but the `bundle` command doesn't work, just run `gem install bundler` in a terminal.
 
 ### Getting Set Up
@@ -53,9 +54,6 @@ You're going to need:
 # either run this to run locally
 bundle install
 bundle exec middleman server
-
-# OR run this to run with vagrant
-vagrant up
 ```
 
 You can now see the docs at http://localhost:4567. Whoa! That was fast!
